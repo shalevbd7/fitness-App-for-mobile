@@ -9,19 +9,19 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import path from "path"; // <--- הוספה 1: ייבוא path
+import path from "path";
 
 dotenv.config();
 const app = express();
 
-const __dirname = path.resolve(); // <--- הוספה 2: הגדרת __dirname
+const __dirname = path.resolve();
 
 // Middleware configuration
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://fitness-app-1-q392.onrender.com",
+      // אפשר להוסיף כאן גם את הדומיין של רנדר אם תרצה, אבל בדומיין יחיד זה פחות קריטי
     ],
     credentials: true,
   })
@@ -38,17 +38,17 @@ app.use("/api/profile", profileRouter);
 app.use("/api/dashboard", dashboardRouter);
 app.use("/api/workouts", workoutRouter);
 
-// --- הוספה 3: הגשת ה-Frontend בייצור ---
+// --- קוד הפרודקשן המתוקן ---
 if (process.env.NODE_ENV === "production") {
   // הגשת קבצים סטטיים מתיקיית ה-dist של הלקוח
   app.use(express.static(path.join(__dirname, "/client/dist")));
 
-  // כל בקשה שלא טופלה ע"י ה-API תופנה לקובץ ה-HTML הראשי של ריאקט
-  app.get("*", (req, res) => {
+  // התיקון: שימוש בביטוי רגולרי (Regex) במקום "*" כדי למנוע את השגיאה
+  app.get(/^(.*)$/, (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
   });
 }
-// ----------------------------------------
+// ----------------------------
 
 const PORT = process.env.PORT || 3000;
 
