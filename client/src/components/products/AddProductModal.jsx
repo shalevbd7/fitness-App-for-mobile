@@ -114,7 +114,7 @@ const AddProductModal = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="modal-box w-full max-w-md relative bg-base-100 shadow-2xl border border-base-300 max-h-[90vh] overflow-y-auto">
+      <div className="modal-box w-full max-w-md relative bg-base-100 shadow-2xl border border-base-300 max-h-[90vh] overflow-y-auto mb-20 sm:mb-0">
         {/* Close Modal Button */}
         <button
           onClick={onClose}

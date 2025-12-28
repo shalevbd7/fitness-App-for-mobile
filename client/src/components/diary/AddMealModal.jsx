@@ -153,7 +153,7 @@ const AddMealModal = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-base-100 w-full max-w-2xl h-[90vh] sm:h-auto min-h-[600px] sm:max-h-[85vh] sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden transition-all">
+      <div className="bg-base-100 w-full max-w-2xl h-[90vh] sm:h-auto min-h-[600px] sm:max-h-[85vh] sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden transition-all mb-20 sm:mb-0">
         {/* Header */}
         <div className="p-4 border-b border-base-200 flex items-center justify-between">
           <h2 className="text-xl font-bold">Report Meal</h2>
